@@ -15,4 +15,10 @@ router.get('/dashboard', (req, res) => {
 	res.render('dashboard');
 });
 
+// Logout User
+router.get('/logout', (req, res) => {
+	req.logOut();
+	res.render('/');
+});
+
 module.exports = router;
