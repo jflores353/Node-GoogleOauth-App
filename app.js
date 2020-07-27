@@ -1,10 +1,12 @@
 const path = require('path');
 const express = require('express');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const connectDB = require('./config/db');
 
 // Load Config
@@ -34,6 +36,7 @@ app.use(
 		resave: false, // false if we don't want to save a session if nothing is modified
 		saveUninitialized: false, // false - don't create a session until something is stored
 		// cookie: { secure: true }, // omit this line does NOT work with https
+		store: new MongoStore({ mongooseConnection: mongoose.connection }),
 	})
 );
 
