@@ -12,7 +12,7 @@ const StorySchema = new mongoose.Schema({
 	},
 	status: {
 		type: String,
-		default: public,
+		default: 'public',
 		enum: ['public', 'private'],
 	},
 	user: {
